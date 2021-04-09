@@ -1,13 +1,11 @@
-import logo from "./logo.svg";
+import NavBar from "./components/NavBar";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>CufaStore in progress </p>
-      </header>
+      <NavBar />
+      <h1>CufaStore in progress 🛠</h1>
     </div>
   );
 }

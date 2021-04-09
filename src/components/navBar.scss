@@ -1,0 +1,32 @@
+.navbarContainer {
+  background-color: darkred;
+  color: white;
+  display: flex;
+  justify-content: flex-start;
+  padding: 8px 12px;
+  align-items: center;
+
+  h2 {
+    font-weight: bold;
+  }
+
+  .navbarMenu {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    overflow: hidden;
+
+    .navbarItem {
+      a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        &:hover {
+          background-color: rgb(163, 25, 25);
+        }
+      }
+    }
+  }
+}
