@@ -15,6 +15,7 @@
     justify-content: space-around;
     list-style-type: none;
     overflow: hidden;
+    align-items: center;
 
     .navbarItem {
       a {
@@ -25,6 +26,9 @@
         text-decoration: none;
         &:hover {
           background-color: rgb(163, 25, 25);
+        }
+        .cartIcon {
+          height: 30px;
         }
       }
     }

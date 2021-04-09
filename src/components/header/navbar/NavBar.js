@@ -1,3 +1,4 @@
+import CartWidget from "../cartIcon.js/CartWidget";
 import "./navBar.scss";
 
 const NavBar = () => {
@@ -15,7 +16,7 @@ const NavBar = () => {
           <a href="#">Contact</a>
         </li>
         <li className="navbarItem">
-          <a href="#">Cart</a>
+          <CartWidget />
         </li>
       </ul>
     </div>

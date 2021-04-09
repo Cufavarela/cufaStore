@@ -1,11 +1,12 @@
-import NavBar from "./components/NavBar";
+import NavBar from "./components/header/navbar/NavBar";
 import "./App.css";
+import ItemListContainer from "./components/body/itemList/ItemListContainer";
 
 function App() {
   return (
     <div className="App">
       <NavBar />
-      <h1>CufaStore in progress 🛠</h1>
+      <ItemListContainer greeting="CufaStore in progress" />
     </div>
   );
 }
