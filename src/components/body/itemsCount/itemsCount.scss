@@ -1,0 +1,39 @@
+.counterWrapper {
+  max-width: 350px;
+  margin: auto;
+
+  .counter {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+
+    .buttons {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin: 10px 0px;
+
+      .button {
+        background-color: transparent;
+        border: none;
+        font-size: 70px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+
+        &:focus {
+          outline: none;
+        }
+
+        &:hover {
+          color: red;
+          cursor: pointer;
+        }
+      }
+
+      .num {
+        font-size: 50px;
+        margin: 0;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+    }
+  }
+}
