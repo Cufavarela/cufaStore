@@ -1,0 +1,18 @@
+.productListWrapper {
+  padding: 15px;
+
+  .productList {
+    display: flex;
+    justify-content: space-around;
+
+    .productWrapper {
+      border: 1px rgb(163, 25, 25) solid;
+      padding: 5px;
+      &:hover {
+        background-color: rgb(255, 164, 164);
+        transition: ease-in-out 0.3s;
+        cursor: pointer;
+      }
+    }
+  }
+}
