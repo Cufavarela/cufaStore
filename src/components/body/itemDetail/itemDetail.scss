@@ -1,0 +1,11 @@
+.itemDetailWrapper {
+  background: white;
+  padding: 10px;
+  position: fixed;
+  width: 600px;
+  top: 40px;
+  left: calc(50% - 300px);
+  bottom: 40px;
+  z-index: 100;
+  box-shadow: 0 3px 6px rgb(0 0 0 / 16%), 0 3px 6px rgb(0 0 0 / 23%);
+}
