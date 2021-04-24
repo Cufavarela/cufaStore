@@ -1,10 +1,9 @@
 import { ItemList } from "./ItemList";
 import "./itemList.scss";
 
-const ItemListContainer = ({ greeting }) => {
+const ItemListContainer = () => {
   return (
     <>
-      <h1>{greeting} 🛠</h1>
       <ItemList />
     </>
   );
