@@ -1,20 +1,28 @@
 import { ItemList } from "./ItemList";
+import { useEffect, useState } from "react";
+import { productsMock } from "../mock/productsMock";
+import Loader from "../../loader/loader";
 import "./itemList.scss";
 
-const ItemListContainer = ({ greeting }) => {
-  // const [qty, setQty] = useState(1);
+const ItemListContainer = () => {
+  const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // const onAdd = (selectedQty) => {
-  //   setQty(selectedQty);
-  //   alert(`Agregaste ${selectedQty} items al carrito 🛒`);
-  // };
+  const getProducts = new Promise((res, rej) => {
+    setTimeout(function () {
+      res(productsMock);
+    }, 2000);
+  });
 
-  return (
-    <>
-      <h1>{greeting} 🛠</h1>
-      <ItemList />
-    </>
-  );
+  useEffect(() => {
+    setIsLoading(true);
+    getProducts
+      .then((res) => setProducts(res))
+      .catch((err) => alert(err))
+      .finally(() => setIsLoading(false));
+  }, []);
+
+  return <>{isLoading ? <Loader /> : <ItemList products={products} />}</>;
 };
 
 export default ItemListContainer;
