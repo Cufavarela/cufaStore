@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import CartWidget from "../cartIcon.js/CartWidget";
+import { DropDown } from "../dropDown/DropDown";
 import "./navBar.scss";
 
 const NavBar = () => {
@@ -11,7 +12,7 @@ const NavBar = () => {
           <Link to="/">Home</Link>
         </li>
         <li className="navbarItem dropdown">
-          <Link to="/">Categories</Link>
+          <DropDown />
         </li>
         <li className="navbarItem">
           <Link to="/contact">Contact</Link>

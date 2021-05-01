@@ -1,5 +1,6 @@
 import "./itemsCount.scss";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export function ItemsCount({ stock, initial, onAdd }) {
   const [counter, setCounter] = useState(initial);
@@ -32,9 +33,9 @@ export function ItemsCount({ stock, initial, onAdd }) {
             -{" "}
           </button>
         </div>
-        <button className="button" onClick={() => onAdd(counter)}>
+        <Link className="button2" onClick={() => onAdd(counter)}>
           Add to cart
-        </button>
+        </Link>
       </div>
     </div>
   );

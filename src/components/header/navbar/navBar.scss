@@ -14,7 +14,6 @@
     display: flex;
     justify-content: space-around;
     list-style-type: none;
-    overflow: hidden;
     align-items: center;
 
     .navbarItem {
@@ -29,6 +28,30 @@
         }
         .cartIcon {
           height: 30px;
+        }
+      }
+      .dropDownContainer {
+        position: relative;
+        a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+          cursor: pointer;
+          &:hover {
+            background-color: rgb(163, 25, 25);
+          }
+        }
+        .dropDownMenu {
+          position: absolute;
+          background-color: darkred;
+          color: rgb(163, 25, 25);
+          padding: 10px;
+          list-style-type: none;
+          width: 88px;
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
+            0 3px 6px rgba(0, 0, 0, 0.23);
         }
       }
     }
