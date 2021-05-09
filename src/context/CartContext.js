@@ -26,8 +26,16 @@ export function CartProvider({ children }) {
     }
   };
 
+  const removeProduct = (itemInCart) => {
+    const existingIndex = cart.findIndex((item) => item.id === itemInCart.id);
+
+    if (existingIndex >= 0) {
+      cart.splice(existingIndex, 1);
+    }
+  };
+
   return (
-    <CartContext.Provider value={{ addProduct, cart, setCart }}>
+    <CartContext.Provider value={{ addProduct, cart, setCart, removeProduct }}>
       {children}
     </CartContext.Provider>
   );
