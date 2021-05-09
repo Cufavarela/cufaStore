@@ -28,9 +28,11 @@ export function CartProvider({ children }) {
 
   const removeProduct = (itemInCart) => {
     const existingIndex = cart.findIndex((item) => item.id === itemInCart.id);
+    const cartCopy = Array.from(cart);
 
     if (existingIndex >= 0) {
-      cart.splice(existingIndex, 1);
+      cartCopy.splice(existingIndex, 1);
+      setCart(cartCopy);
     }
   };
 
