@@ -11,7 +11,7 @@ export function CartProvider({ children }) {
     if (existingIndex >= 0) {
       cart[existingIndex] = {
         ...cart[existingIndex],
-        qty: qty,
+        qty: cart[existingIndex].qty + qty,
       };
     } else {
       setCart([
