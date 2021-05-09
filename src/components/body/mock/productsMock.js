@@ -5,6 +5,7 @@ export const productsMock = [
     img: "http://placekitten.com/g/200/300",
     stock: 5,
     price: 500,
+    category: "cufas",
   },
   {
     id: "2",
@@ -12,12 +13,14 @@ export const productsMock = [
     img: "http://placekitten.com/g/200/300",
     stock: 3,
     price: 500,
+    category: "cufas",
   },
   {
     id: "3",
-    name: "Remerufa",
+    name: "Restmera",
     img: "http://placekitten.com/g/200/300",
     stock: 6,
     price: 500,
+    category: "rest",
   },
 ];
