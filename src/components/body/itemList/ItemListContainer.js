@@ -1,28 +1,45 @@
 import { useEffect, useState } from "react";
 import { ItemList } from "./ItemList";
-import { productsMock } from "../mock/productsMock";
 import Loader from "../../loader/loader";
 import "./itemList.scss";
+import { getFirestore } from "../../../firebase/firebaseConfig";
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
-  const getProducts = new Promise((res, rej) => {
-    setTimeout(function () {
-      res(productsMock);
-    }, 2000);
-  });
+  const [getIsEmpty, setGetIsEmpty] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
-    getProducts
-      .then((res) => setProducts(res))
+    const db = getFirestore();
+    const itemsCollection = db.collection("items");
+    itemsCollection
+      .get()
+      .then((querySnapshot) => {
+        if (querySnapshot.size === 0) {
+          setGetIsEmpty(true);
+        }
+        setProducts(
+          querySnapshot.docs.map((doc) => {
+            return { id: doc.id, ...doc.data() };
+          })
+        );
+      })
       .catch((err) => alert(err))
       .finally(() => setIsLoading(false));
   }, []);
 
-  return <>{isLoading ? <Loader /> : <ItemList products={products} />}</>;
+  return (
+    <>
+      {isLoading ? (
+        <Loader />
+      ) : getIsEmpty ? (
+        <h2>NO HAY PRODUCTOS</h2>
+      ) : (
+        <ItemList products={products} />
+      )}
+    </>
+  );
 };
 
 export default ItemListContainer;
