@@ -1,18 +1,21 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const CartContext = createContext();
 
 export function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const addProduct = (id, name, price, qty) => {
     const existingIndex = cart.findIndex((item) => item.id === id);
 
+    let cartCopy = cart.slice();
     if (existingIndex >= 0) {
-      cart[existingIndex] = {
-        ...cart[existingIndex],
-        qty: cart[existingIndex].qty + qty,
+      cartCopy[existingIndex] = {
+        ...cartCopy[existingIndex],
+        qty: cartCopy[existingIndex].qty + qty,
       };
+      setCart(cartCopy);
     } else {
       setCart([
         ...cart,
@@ -26,6 +29,16 @@ export function CartProvider({ children }) {
     }
   };
 
+  const reducer = (previousValue, currentValue) => previousValue + currentValue;
+
+  useEffect(() => {
+    if (cart.length) {
+      const prices = cart.map((item) => item.price * item.qty);
+      console.log(prices.reduce(reducer));
+      setTotalPrice(prices.reduce(reducer));
+    }
+  }, [cart]);
+
   const removeProduct = (itemInCart) => {
     const existingIndex = cart.findIndex((item) => item.id === itemInCart.id);
     const cartCopy = Array.from(cart);
@@ -37,7 +50,9 @@ export function CartProvider({ children }) {
   };
 
   return (
-    <CartContext.Provider value={{ addProduct, cart, setCart, removeProduct }}>
+    <CartContext.Provider
+      value={{ addProduct, cart, setCart, removeProduct, totalPrice }}
+    >
       {children}
     </CartContext.Provider>
   );
