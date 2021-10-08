@@ -14,14 +14,14 @@ export const ItemDetailContainer = () => {
     setIsLoading(true);
     const db = getFirestore();
     const itemsCollection = db.collection("items");
-    const item = itemsCollection.doc(id);
-    item
+    itemsCollection
       .get()
-      .then((doc) => {
-        if (!doc.exists) {
-          console.log("No existe");
-        }
-        setProduct({ id: doc.id, ...doc.data() });
+      .then((querySnapshot) => {
+        querySnapshot.docs.forEach((doc) => {
+          if (doc.id === id) {
+            setProduct({ id: doc.id, ...doc.data() });
+          }
+        });
       })
       .catch((err) => alert(err))
       .finally(() => setIsLoading(false));

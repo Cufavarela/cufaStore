@@ -31,23 +31,24 @@ export const ItemDetail = ({ product }) => {
       {finishButton ? (
         <Link
           to="/cart"
-          className="button2"
+          className="buttonClose"
           onClick={() => {
             goToPayment();
           }}
         >
-          Go to payment
+          Go to cart!
         </Link>
-      ) : null}
-      <Link
-        className="buttonClose"
-        to="/"
-        onClick={() => {
-          setQty(0);
-        }}
-      >
-        Go Back!
-      </Link>
+      ) : (
+        <Link
+          className="buttonClose"
+          to="/"
+          onClick={() => {
+            setQty(0);
+          }}
+        >
+          Go Back!
+        </Link>
+      )}
     </div>
   );
 };
