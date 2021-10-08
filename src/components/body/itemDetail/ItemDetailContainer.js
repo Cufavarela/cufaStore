@@ -2,27 +2,24 @@ import { useEffect, useState } from "react";
 import "./itemDetail.scss";
 import Loader from "../../loader/loader";
 import { ItemDetail } from "./ItemDetail";
-import { productsMock } from "../mock/productsMock";
 import { useParams } from "react-router";
+import { getFirestore } from "../../../firebase/firebaseConfig";
 
 export const ItemDetailContainer = () => {
   const { id } = useParams();
   const [product, setProduct] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
-  const getProducts = new Promise((res, rej) => {
-    setTimeout(function () {
-      res(productsMock);
-    }, 2000);
-  });
-
   useEffect(() => {
     setIsLoading(true);
-    getProducts
-      .then((res) => {
-        res.forEach((item) => {
-          if (item.id === id) {
-            setProduct(item);
+    const db = getFirestore();
+    const itemsCollection = db.collection("items");
+    itemsCollection
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.docs.forEach((doc) => {
+          if (doc.id === id) {
+            setProduct({ id: doc.id, ...doc.data() });
           }
         });
       })
