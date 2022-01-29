@@ -8,6 +8,9 @@ export const ItemDetail = ({ product }) => {
 
   return (
     <div className="itemDetail">
+      <button className="closeButton" onClick={() => setModalIsOpen(false)}>
+        X
+      </button>
       <img src={product.img} alt="product" />
       <h2>{product.name}</h2>
       <h4>${product.price}</h4>

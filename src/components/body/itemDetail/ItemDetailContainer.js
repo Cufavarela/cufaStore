@@ -10,7 +10,7 @@ export const ItemDetailContainer = () => {
   const [product, setProduct] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
-  const getProducts = new Promise((res, rej) => {
+  const getItems = new Promise((res, rej) => {
     setTimeout(function () {
       res(productsMock);
     }, 2000);
@@ -18,7 +18,7 @@ export const ItemDetailContainer = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    getProducts
+    getItems
       .then((res) => {
         res.forEach((item) => {
           if (item.id === id) {
